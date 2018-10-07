@@ -14,7 +14,9 @@
   <div class="card">
     <div class="card-header">
       <h3 >Planning Poker</h3>
+
       <div class="row">
+        <!-- navigation -->
       <div class="col-sm-11">
         <ul class="nav nav-pills">
           <li class="nav-item">
@@ -28,6 +30,7 @@
           </li>
         </ul>
       </div>
+      <!-- user -->
       <div class="col-sm-1">
         <div class="dropdown">
           <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
