@@ -35,7 +35,7 @@
         </div>
         </form>
         <!-- Password Forgotten -->
-        <small id="passwordForgotten" class="form-text text-muted"> <a href="https://giphy.com/gifs/dosequisgifstotheworld-no-facepalm-smh-ADr35Z4TvATIc/fullscreen">Password forgotten?</a></small>
+        <a href="https://giphy.com/gifs/dosequisgifstotheworld-no-facepalm-smh-ADr35Z4TvATIc/fullscreen" class="badge badge-secondary">Password forgotten?</a>
         </div>
         <div class="card-footer">
           <form>

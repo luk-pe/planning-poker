@@ -35,7 +35,7 @@
           <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             User
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">Show details</a>
             <a class="dropdown-item" href="#">Log out</a>
           </div>
@@ -44,7 +44,116 @@
       </div>
     </div>
     <div class="card-body">
+      <h4> Finished assesments </h4>
+      <!-- TODO -->
+      <h6> Filter options</h6>
+  <!-- content -->
+  <div id="accordion">
+  <!-- card for each assignment -->
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <div class="row">
+          <div class="col-sm-6">
+        Assignement title
+      </div>
+      <!--  TODO Style in CSS Datei auslagern-->
+        <div class="col-sm-6" style="text-align:right">
+        <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="badge badge-primary">Details</a>
+      </div>
+    </div>
+      </h5>
+    </div>
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <!--  card body contains assignment details-->
+      <div class="card-body">
 
+        <div class="row">
+          <div class="col-sm-8">
+        <p> <strong> Participants: </strong></p>
+      </div>
+      <div class="col-sm-4">
+        <!--  TODO Style in CSS Datei auslagern-->
+        <p style="text-align:right"> <strong> Completed:</strong> 01.01.1970 </p>
+      </div>
+    </div>
+    <!-- participants -->
+            <p> Participant One </p>
+            <p> Participant Two </p>
+            <p> ... </p>
+
+        <!-- tasks -->
+        <p> <strong> Tasks: </strong></p>
+        <!-- row for each rask -->
+        <div class="row">
+          <div class="col-sm-4">
+            <p> Title Task 1</p>
+          </div>
+          <div class="col-sm-4">
+            <p> Estimation: 4 PT </p>
+          </div>
+          <!--  TODO Style in CSS Datei auslagern-->
+          <div class="col-sm-4" style="text-align:right">
+            <!-- detail button collapses details -->
+            <a  class="badge badge-outline-primary" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">
+              Details
+            </a>
+          </div>
+        </div>
+        <!--  task details -->
+        <div class="collapse" id="collapseExample1">
+          <div class="card card-body">
+            <p>Description: </p>
+            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </p>
+            <p>Estimated expenses: </p>
+            <div class="row">
+              <div class="col-sm-2">
+                <p> User 1</p>
+              </div>
+              <div class="col-sm-10">
+                <p> 4 PT </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">
+                <p> User 2</p>
+              </div>
+              <div class="col-sm-10">
+                <p> 4 PT </p>
+              </div>
+            </div>
+          </div>
+          </br>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <p> Title Task 2</p>
+          </div>
+          <div class="col-sm-4">
+            <p> Estimation: 16 PT </p>
+          </div>
+          <!--  TODO Style in CSS Datei auslagern-->
+          <div class="col-sm-4" style="text-align:right">
+            <!-- detail button collapses details -->
+            <a  class="badge badge-outline-primary" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+              Details
+            </a>
+          </div>
+        </div>
+        <!--  task details -->
+        <div class="collapse" id="collapseExample2">
+          <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+          </br>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
     </div>
   </div>
