@@ -14,21 +14,23 @@
   <div class="card">
     <h3 class="card-header">Welcome!</h3>
     <div class="card-body">
-      <h5 class="card-title"> Login or <a href="register.php"> Register </a> to join a Planning Poker Meeting</h5>
-      <p class="card-text">Login with your Username and Password</p>
+      <h5 class="card-title"> Login or <a href="register.html"> register </a> to join a Planning Poker Meeting</h5>
+      <p class="card-text">Login with your username and password</p>
+      <?php if (isset($_GET['authentification'])){
+        if ($_GET['authentification']== 'fail'){
+        echo "<span class='badge badge-danger'> Wrong login data! </span>";
+        echo "</br></br>";
+      }}?>
       <!-- Login form -->
-      <form>
+      <form action="helper/loginValidation.php" method="post">
         <!-- Username -->
         <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">@</span>
-          </div>
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+          <input type="text" class="form-control" placeholder="Username" name="username">
         </div>
       </br>
       <!-- Password -->
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Password" aria-label="Password">
+          <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
             <button class="btn btn-primary" type="submit">Login</button>
           </div>
@@ -44,11 +46,10 @@
             <!-- Login -->
             <input type="button" class="btn btn-outline-secondary active" value="Login"/>
             <!-- Register -->
-            <input type="button" class="btn btn-outline-secondary" value="Register"onclick="window.location.href='register.php'"/>
+            <input type="button" class="btn btn-outline-secondary" value="Register"onclick="window.location.href='register.html'"/>
 
           </div>
           </form>
-
         </div>
   </div>
 </div>
