@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
   <div class="card">
     <h3 class="card-header">Welcome!</h3>
     <div class="card-body">
-      <h5 class="card-title"> Login or <a href="register.html"> register </a> to join a Planning Poker Meeting</h5>
+      <h5 class="card-title"> Login or <a href="register.php"> register </a> to join a Planning Poker Meeting</h5>
       <p class="card-text">Login with your username and password</p>
       <?php if (isset($_GET['authentification'])){
         if ($_GET['authentification']== 'fail'){
@@ -46,7 +47,7 @@
             <!-- Login -->
             <input type="button" class="btn btn-outline-secondary active" value="Login"/>
             <!-- Register -->
-            <input type="button" class="btn btn-outline-secondary" value="Register"onclick="window.location.href='register.html'"/>
+            <input type="button" class="btn btn-outline-secondary" value="Register"onclick="window.location.href='register.php'"/>
 
           </div>
           </form>

@@ -1,3 +1,8 @@
+<?php
+require_once 'helper/topInclude.php';
+require 'helper/assesmentSelection.php';
+$page = 'enterAssesment';
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,39 +17,66 @@
   <div class="container">
     <!-- bootstrap card-->
   <div class="card">
-    <div class="card-header">
-      <h3 >Planning Poker</h3>
-      <div class="row">
-        <!-- navigation -->
-      <div class="col-sm-11">
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link" href="overview.php">Overview</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Enter assesment</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="newAssesment.php">New assesment </a>
-          </li>
-        </ul>
-      </div>
-      <!-- user -->
-      <div class="col-sm-1">
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            User
-          </button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Show details</a>
-            <a class="dropdown-item" href="#">Log out</a>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
+    <?php require 'structure/header.php' ?>
     <div class="card-body">
+      <h4> Open assesments </h4></br>
 
+      <h6 class='mb-0'>
+        <!--  row for each open assesment -->
+        <?php
+        $assesments = assesmentsForUser($_SESSION['id'], 1);
+        if($assesments==NULL){
+          echo"
+          <span class='badge badge-secondary'>No open assesments available. </span>
+           ";
+        }else{
+        foreach ($assesments as $a) {
+          echo("
+          <div class='row'>
+            <div class='col-sm-6'>
+              <!-- assesment title-->
+              {$a['title']}
+            </div>
+            <!--  TODO Style in CSS Datei auslagern-->
+            <div class='col-sm-6' style='text-align:right'>
+              <!-- start planning poker assesment -->
+              <a href='#' class='badge badge-success'>Start</a>
+              <a  class='badge badge-primary' data-toggle='collapse' href='#collapseExample{$a['id']}' role='button' aria-expanded='false' aria-controls='collapseExample{$a['id']}'>
+                Details
+              </a>
+            </div>
+          </div></br>
+          <!-- assesment details -->
+          <div class='collapse' id='collapseExample{$a['id']}'>
+            <div class='card card-body'>
+            <div class='row'>
+            <div class='col-sm-6'>
+            <p>Invited participants:</p>
+            ");
+            $participants=assesmentParticipants($a['id']);
+            foreach ($participants as $p) {
+              echo "{$p} </br>";
+            }
+            echo "</div>
+            <div class='col-sm-6'>
+            <p>Tasks:</p>
+            ";
+            // select and echo tasks for assesment
+            $tasks = assesmentTasks($a['id']);
+            foreach ($tasks as $t) {
+              echo "{$t['title']} </br>";
+            }
+            echo("
+            </div>
+            </div>
+            </div></br>
+            </div>
+          ");
+        }
+      }
+         ?>
+
+      </h6>
 
     </div>
   </div>

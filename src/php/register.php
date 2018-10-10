@@ -14,13 +14,31 @@
   <div class="card">
     <h3 class="card-header">Welcome!</h3>
     <div class="card-body">
-      <h5 class="card-title"> Register or <a href=login.html> Login </a> to join a Planning Poker Meeting</h5>
+      <h5 class="card-title"> Register or <a href=login.php> login </a> to join a Planning Poker Meeting</h5>
       <p class="card-text">Please give us some data to identify you</p>
     <!-- Register Form -->
-    <form>
+    <form action="helper/registerValidation.php" method="post">
         <!-- -->
         <div class="form-group">
           <label for="Email">Email address</label>
+          <?php
+          if (isset($_GET['validation'])){
+            echo "</br>";
+            switch ($_GET['validation']) {
+              case 'mailInvalidChars':
+                  echo "<span class='badge badge-danger'> Email adress contains invalid characters! </span>";
+                  echo "</br></br>";
+                  break;
+              case 'mailExists':
+                  echo "<span class='badge badge-danger'> User with this email adress already exists! </span>";
+                  echo "</br></br>";
+                  break;
+              case 'mailInvalid':
+                  echo "<span class='badge badge-danger'> Invalid email adress! </span>";
+                  echo "</br></br>";
+                  break;
+            }
+          }?>
           <input type="email" class="form-control" id="email" placeholder="Enter email">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
@@ -40,14 +58,15 @@
       </form>
 
     </div>
+    <!-- TODO footer for login and register in sperate file -->
     <div class="card-footer">
       <form>
       <!-- Login or Register -->
       <div class="btn-group" role="group" aria-label="Basic example">
         <!-- Login -->
-        <input type="button" class="btn btn-outline-secondary" value="Login" onclick="window.location.href='login.html'"/>
+        <input type="button" class="btn btn-outline-secondary" value="Login" onclick="window.location.href='login.php'"/>
         <!-- Register -->
-        <input type="button" class="btn btn-outline-secondary active" value="Register" onclick="window.location.href='register.html'"/>
+        <input type="button" class="btn btn-outline-secondary active" value="Register" onclick="window.location.href='register.php'"/>
 
       </div>
       </form>
