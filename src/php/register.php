@@ -25,6 +25,10 @@
           if (isset($_GET['validation'])){
             echo "</br>";
             switch ($_GET['validation']) {
+              case 'mailNULL':
+                  echo "<span class='badge badge-danger'> Please give us your email adress! </span>";
+                  echo "</br></br>";
+                  break;
               case 'mailInvalidChars':
                   echo "<span class='badge badge-danger'> Email adress contains invalid characters! </span>";
                   echo "</br></br>";

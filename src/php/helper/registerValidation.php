@@ -12,14 +12,17 @@ function registerFormValidation(){
   $result=mysqli_query($link, $query);
 
 
-
+  if($email==NULL){
+    header("Location: ../register.php?validation=mailNULL");
+    exit();
+  }
   // contians invalid chars
-  if ($email != $_POST['email']){
+  elseif ($email != $_POST['email']){
     header("Location: ../register.php?validation=mailInvalidChars");
     exit();
   }
   // existing user with same email adress
-  elseif (mysqli_fetch_assoc($result)) {
+  elseif (mysqli_fetch_assoc($result)!=NULL) {
     header("Location: ../register.php?validation=mailExists");
     exit();
   }
@@ -49,4 +52,5 @@ $email = htmlspecialchars($_POST['email']);
 $username = htmlspecialchars($_POST['username']);
 $password1 = htmlspecialchars($POST['password1']);
 $password2 = htmlspecialchars($POST['password2']);
+registerFormValidation();
 ?>
