@@ -8,11 +8,20 @@ function register($registerFormValidation, $email, $username, $password1, $link)
     $email = htmlspecialchars($email);
     $username = htmlspecialchars($username);
     $password1 = htmlspecialchars($password1);
+
+    // Insert user data into DB
     $query = "INSERT INTO pp_user (email, username, password)
               VALUES ('{$email}', '{$username}', '{$password1}')";
-    echo $query;
+    // echo $query;
+    // actual insert performed here
     if(mysqli_query($link, $query)){
-      echo "sauber!";
+      // if insert was successfully login user...
+      require_once 'userIdentification.php';
+      $id=usernameToId($username);
+      $_SESSION['id']=$id;
+      //...and redirect to overview page
+      header("Location: ../overview.php");
+      exit();
     }else{
       header("Location: https://giphy.com/gifs/1RkDDoIVs3ntm/fullscreen");
       exit();
@@ -119,5 +128,5 @@ $username = $_POST['username'];
 $password1 = $_POST['password1'];
 $password2 = $_POST['password2'];
 $registerFormValidation=registerFormValidation($email, $username, $password1, $password2, $link);
-register($registerFormValidation, $email, $username, $password1, $password2, $link);
+register($registerFormValidation, $email, $username, $password1, $link);
 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 function authentification ($username, $password){
-  require 'db_connect.php';
+  require_once 'db_connect.php';
   $query = "SELECT id FROM pp_user AS u WHERE u.username = '{$username}' AND u.password = '{$password}'";
   $result=mysqli_query($link, $query);
   $r = mysqli_fetch_assoc($result);
