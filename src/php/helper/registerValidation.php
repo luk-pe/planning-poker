@@ -5,19 +5,19 @@ function register(){
 
 }
 
-function registerFormValidation(){
+function registerFormValidation($email, $username, $password1, $password2, $link){
   // email
   // is email adress already in db?
-  $query = "SELECT id FROM pp_user WHERE email = $email";
+  $query = "SELECT id FROM pp_user WHERE email =".htmlspecialchars($email);
   $result=mysqli_query($link, $query);
 
-
+  // no email adress submitted
   if($email==NULL){
     header("Location: ../register.php?validation=mailNULL");
     exit();
   }
   // contians invalid chars
-  elseif ($email != $_POST['email']){
+  elseif ($email != htmlspecialchars($email)){
     header("Location: ../register.php?validation=mailInvalidChars");
     exit();
   }
@@ -48,9 +48,9 @@ function registerFormValidation(){
   // return true wenn alles passt
 }
 
-$email = htmlspecialchars($_POST['email']);
-$username = htmlspecialchars($_POST['username']);
-$password1 = htmlspecialchars($POST['password1']);
+$email = $_POST['email'];
+$username = $_POST['username'];
+$password1 = $POST['password1'];
 $password2 = htmlspecialchars($POST['password2']);
-registerFormValidation();
+registerFormValidation($email, $username, $password1, $password2, $link);
 ?>
