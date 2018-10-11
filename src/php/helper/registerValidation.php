@@ -51,6 +51,6 @@ function registerFormValidation($email, $username, $password1, $password2, $link
 $email = $_POST['email'];
 $username = $_POST['username'];
 $password1 = $POST['password1'];
-$password2 = htmlspecialchars($POST['password2']);
+$password2 = $POST['password2'];
 registerFormValidation($email, $username, $password1, $password2, $link);
 ?>
