@@ -9,13 +9,13 @@ function userIdentification (){
         header("Location: login.php");
     }
   } else {
-    header("Location: login.php?sessionID={$id}");
+    header("Location: login.php");
   }
 }
 
 
 function idToUsername($id){
-  require_once 'db_connect.php';
+  require 'db_connect.php';
   $query="SELECT username FROM pp_user WHERE id = {$id}";
   $result=mysqli_query($link, $query);
   $r = mysqli_fetch_assoc($result);
@@ -24,8 +24,8 @@ function idToUsername($id){
   return $username;
 }
 function usernameToId($username){
-  require_once 'db_connect.php';
-  $query="SELECT id FROM pp_user WHERE username = {$username}";
+  require 'db_connect.php';
+  $query="SELECT id FROM pp_user WHERE username = '{$username}'";
   $result=mysqli_query($link, $query);
   $r = mysqli_fetch_assoc($result);
   $id = $r['id'];
