@@ -43,19 +43,68 @@
                   break;
             }
           }?>
-          <input type="email" class="form-control" id="email" placeholder="Enter email">
+          <input type="email" class="form-control" name="email" placeholder="Enter email">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <!-- Username -->
         <div class="form-group">
           <label for="Username">Username</label>
-          <input type="text" class="form-control" id="username" placeholder="Choose a username">
+          <?php
+          if (isset($_GET['validation'])){
+            echo "</br>";
+            switch ($_GET['validation']) {
+              case 'usernameNULL':
+                  echo "<span class='badge badge-danger'> Please choose a username! </span>";
+                  echo "</br></br>";
+                  break;
+              case 'usernameInvalidChars':
+                  echo "<span class='badge badge-danger'> Username contains invalid characters! </span>";
+                  echo "</br></br>";
+                  break;
+              case 'usernameExists':
+                  echo "<span class='badge badge-danger'> User with this username already exists! </span>";
+                  echo "</br></br>";
+                  break;
+            }
+          }?>
+          <input type="text" class="form-control" name="username" placeholder="Choose a username">
         </div>
         <!-- Password -->
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="password1" placeholder="Password"> </br>
-          <input type="password" class="form-control" id="password2" placeholder="Repeat password">
+          <?php
+          if (isset($_GET['validation'])){
+            echo "</br>";
+            switch ($_GET['validation']) {
+              case 'pw1NULL':
+                  echo "<span class='badge badge-danger'> Please choose a password! </span>";
+                  echo "</br></br>";
+                  break;
+              case 'pw1InvalidChars':
+                  echo "<span class='badge badge-danger'> Password contains invalid characters! </span>";
+                  echo "</br></br>";
+                  break;
+            }
+          }?>
+          <input type="password" class="form-control" name="password1" placeholder="Password"> </br>
+          <?php
+          if (isset($_GET['validation'])){
+            switch ($_GET['validation']) {
+              case 'pw2NULL':
+                  echo "<span class='badge badge-danger'> Please repeat the password! </span>";
+                  echo "</br></br>";
+                  break;
+              case 'pw2InvalidChars':
+                  echo "<span class='badge badge-danger'> Password contains invalid characters! </span>";
+                  echo "</br></br>";
+                  break;
+              case 'pwNotIdentical':
+                  echo "<span class='badge badge-danger'> Passwords are not identical! </span>";
+                  echo "</br></br>";
+                  break;
+            }
+          }?>
+          <input type="password" class="form-control" name="password2" placeholder="Repeat password">
         </div>
         <!-- Register Button -->
         <button type="submit" class="btn btn-primary">Register</button>
