@@ -21,7 +21,7 @@ $page = 'enterAssesment';
     <div class="card-body">
       <h4> Open assesments </h4></br>
 
-      <h6 class='mb-0'>
+      <p class='mb-0'>
         <!--  row for each open assesment -->
         <?php
         $assesments = assesmentsForUser($_SESSION['id'], 1);
@@ -35,7 +35,7 @@ $page = 'enterAssesment';
           <div class='row'>
             <div class='col-sm-6'>
               <!-- assesment title-->
-              {$a['title']}
+            <h6>  {$a['title']} </h6>
             </div>
             <!--  TODO Style in CSS Datei auslagern-->
             <div class='col-sm-6' style='text-align:right'>
@@ -51,7 +51,7 @@ $page = 'enterAssesment';
             <div class='card card-body'>
             <div class='row'>
             <div class='col-sm-6'>
-            <p>Invited participants:</p>
+            <h6>Invited participants:</h6>
             ");
             $participants=assesmentParticipants($a['id']);
             foreach ($participants as $p) {
@@ -59,7 +59,7 @@ $page = 'enterAssesment';
             }
             echo "</div>
             <div class='col-sm-6'>
-            <p>Tasks:</p>
+            <h6>Tasks:</h6>
             ";
             // select and echo tasks for assesment
             $tasks = assesmentTasks($a['id']);
@@ -76,7 +76,7 @@ $page = 'enterAssesment';
       }
          ?>
 
-      </h6>
+      </p>
 
     </div>
   </div>
