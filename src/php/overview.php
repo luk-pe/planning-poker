@@ -30,6 +30,11 @@ $page = 'overview';
 
       // select finished assesments for the user
       $assesments = assesmentsForUser($_SESSION['id'],2);
+      if($assesments==NULL){
+        echo"
+        <span class='badge badge-secondary'>No finished assesments existing yet. </span>
+         ";
+      }
       // create a card for each assesments
       foreach ($assesments as $a) {
         echo("

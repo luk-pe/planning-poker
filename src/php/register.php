@@ -1,3 +1,4 @@
+<!--  TODO: front-end validation and maybe password lenght etc. requirements-->
 <!DOCTYPE html>
 <html>
 <head>
