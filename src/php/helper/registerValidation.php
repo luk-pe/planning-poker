@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'db_connect.php';
+// function to register a new user
 function register($registerFormValidation, $email, $username, $password1, $link){
   if($registerFormValidation){
     // insert user data into db
@@ -12,7 +13,6 @@ function register($registerFormValidation, $email, $username, $password1, $link)
     // Insert user data into DB
     $query = "INSERT INTO pp_user (email, username, password)
               VALUES ('{$email}', '{$username}', '{$password1}')";
-    // echo $query;
     // actual insert performed here
     if(mysqli_query($link, $query)){
       // if insert was successfully login user...
@@ -26,17 +26,15 @@ function register($registerFormValidation, $email, $username, $password1, $link)
       header("Location: https://giphy.com/gifs/1RkDDoIVs3ntm/fullscreen");
       exit();
     };
-
   }
 }
-
+// function to validate the registration form
 function registerFormValidation($email, $username, $password1, $password2, $link){
   $registerValidation = array(
     'emailValidation' => false,
     'usernameValidation' => false,
     'passwordValidation' => false
   );
-
   // email
   // is email adress already in db?
   $query = "SELECT id FROM pp_user WHERE email ='".htmlspecialchars($email)."'";
@@ -122,7 +120,7 @@ function registerFormValidation($email, $username, $password1, $password2, $link
     return true;
   }
 }
-
+// get data
 $email = $_POST['email'];
 $username = $_POST['username'];
 $password1 = $_POST['password1'];

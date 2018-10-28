@@ -1,9 +1,11 @@
 <?php
 function estimations($task){
-  require 'db_connect.php';
-  // require 'userIdentification.php';
+  require_once 'db_connect.php';
+  // SQL statement
   $query="SELECT pp_user_id, estimation FROM estimated_expense WHERE task_id = $task";
+  // run SQL statement
   $result = mysqli_query($link, $query);
+  // create array that contains the estimations for each user
   $estimations=array();
   while ($row =mysqli_fetch_assoc($result)){
     $estimations[]=array(

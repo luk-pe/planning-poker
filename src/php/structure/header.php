@@ -3,7 +3,7 @@
  <div class="card-header">
    <h3 >Planning Poker</h3>
    <div class="row">
-     <!-- navigation -->
+     <!-- navigation: depending on current page, different elements have status active -->
    <div class="col-sm-10">
      <ul class="nav nav-pills">
        <li class="nav-item">

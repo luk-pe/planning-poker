@@ -16,10 +16,29 @@ $page = 'newAssesment';
   <div class="container">
     <!-- bootstrap card-->
   <div class="card">
-    <?php require 'structure/header.php' ?>
     <div class="card-body">
-
-
+      <h5>Create a new Planning Poker assesment</h5>
+      <form action="helper/createAssesment.php" method="post">
+      <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" name="assesment_title" placeholder="Enter title">
+      </div>
+      <div class="form-group">
+        <label for="project_id">Projekt ID</label>
+        <input type="number" class="form-control" name="project_id" placeholder="optional">
+      </div>
+      <div class="form-group">
+        <label for="participants">Participants</label>
+        <select multiple class="form-control" name="participants[]">
+          <option value="Lukas">Lukas</option>
+          <option value="Michi">Michi</option>
+          <option value="Elias">Elias</option>
+          <option value="Robert">Robert</option>
+        </select>
+        <small id="selectHelp" class="form-text text-muted">select more than one participant by holding shift or command</small>
+      </div>
+        <button type="submit" class="btn btn-primary">Create assesment and add some tasks </button>
+    </form>
     </div>
   </div>
 </div>
