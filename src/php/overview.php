@@ -140,9 +140,6 @@ echo("
         }
        ?></p>
 
-  <!-- card for each assesment -->
-  <!--  TODO generate card at runtime with db data-->
-  <!--  select assesment with completion date !NULL-->
 
 </div>
 

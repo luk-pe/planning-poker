@@ -17,7 +17,6 @@ $assesmentId = htmlspecialchars($_GET['id']);
 // function call
 createTask($taskTitle, $taskDescription, $assesmentId);
 // data from radio button on newTask.php
-// TODO fix this!?
 $nextStep = $_POST['radioNextStep'];
  if($nextStep=="Finish"){
     header("Location: ../overview.php");
