@@ -3,7 +3,7 @@ session_start();
 // function to create a new assesment
 function createAssesment($projektId, $assesmentTitle){
   // db connection
-  require_once 'db_connect.php';
+  require 'db_connect.php';
   // SQL statement to insert assesment
   $query = "INSERT INTO assesment (projektid, title)
   VALUES ('{$projektId}', '{$assesmentTitle}')";

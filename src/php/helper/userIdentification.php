@@ -26,7 +26,7 @@ function userIdentification (){
 // function to get the username if only the user id is given
 function idToUsername($id){
   // DB connection
-  require_once 'db_connect.php';
+  require 'db_connect.php';
   // SQL statement
   $query="SELECT username FROM pp_user WHERE id = {$id}";
   // run SQL statement
@@ -40,7 +40,7 @@ function idToUsername($id){
 // function to get the user id if only the username is given
 function usernameToId($username){
   // DB connection
-  require_once 'db_connect.php';
+  require 'db_connect.php';
   // SQL statement
   $query="SELECT id FROM pp_user WHERE username = '{$username}'";
   // run SQL statement

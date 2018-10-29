@@ -1,6 +1,6 @@
 <?php
 function estimations($task){
-  require_once 'db_connect.php';
+  require 'db_connect.php';
   // SQL statement
   $query="SELECT pp_user_id, estimation FROM estimated_expense WHERE task_id = $task";
   // run SQL statement

@@ -3,7 +3,7 @@ session_start();
 // function to select the assesments for a user
 function assesmentsForUser($user, $completed){
   // DB connection
-  require_once 'db_connect.php';
+  require 'db_connect.php';
     // $completed == 0 -> all assesments for user
     if ($completed==0){
       // SQL statement
@@ -37,7 +37,7 @@ function assesmentsForUser($user, $completed){
 // function to select the participants for an assesment
 function assesmentParticipants($assesment){
     // DB connection
-    require_once 'db_connect.php';
+    require 'db_connect.php';
     // SQL statement
     $query="SELECT u.username FROM pp_user as u INNER JOIN participant AS p ON u.id = p.pp_user_id WHERE p.assesment_id = $assesment";
     // run SQL statement
@@ -54,7 +54,7 @@ function assesmentParticipants($assesment){
 // function to select the tasks for an assesment
 function assesmentTasks($assesment){
     // DB connection
-    require_once 'db_connect.php';
+    require 'db_connect.php';
     // SQL statement
     $query="SELECT t.id, t.title, t.description, t.result FROM  assesment AS a INNER JOIN task AS t ON a.id = t.assesment_id WHERE a.id = $assesment";
     // run SQL statement

@@ -30,14 +30,18 @@ $page = 'newTask';
         </div>
         <!--  task description -->
         <div class="form-group">
-          <!--  TODO bigger input field-->
           <label for="Title">Task description</label>
-          <input type="text" class="form-control" name="task_description" placeholder="Enter description">
+          <textarea class="form-control" rows="5" name="task_description"></textarea>
         </div>
         <!--  selection next step: add another task or finish-->
-        <div class="form-group">
-          <label for="Title">Next Step</label>
-          <!--  TODO radio buttons -->
+        <p>Next step:</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radioNextStep" value="NewTask" checked>
+          <label for="Title">Add another Task</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radioNextStep" value="Finish">
+          <label for="Title">Finish</label>
         </div>
         <!--  submit button -->
         <button type="submit" class="btn btn-primary">Create task</button>

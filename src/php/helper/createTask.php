@@ -16,5 +16,13 @@ $taskDescription = htmlspecialchars($_POST['task_description']);
 $assesmentId = htmlspecialchars($_GET['id']);
 // function call
 createTask($taskTitle, $taskDescription, $assesmentId);
-// TODO value from radio buttons -> next page
+// data from radio button on newTask.php
+// TODO fix this!?
+$nextStep = $_POST['radioNextStep'];
+ if($nextStep=="Finish"){
+    header("Location: ../overview.php");
+ }else {
+    header("Location: ../newTask.php?id={$assesmentId}");
+ }
+
 ?>
