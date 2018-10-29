@@ -29,11 +29,14 @@ $page = 'newAssesment';
       </div>
       <div class="form-group">
         <label for="participants">Participants</label>
+
         <select multiple class="form-control" name="participants[]">
-          <option value="Lukas">Lukas</option>
-          <option value="Michi">Michi</option>
-          <option value="Elias">Elias</option>
-          <option value="Robert">Robert</option>
+          <?php
+          require 'helper/userSelection.php';
+          $users = userSelection();
+          foreach ($users as $u){
+            echo "<option value='{$u['username']}'>{$u['username']}</option>";           }
+           ?>
         </select>
         <small id="selectHelp" class="form-text text-muted">select more than one participant by holding shift or command</small>
       </div>
