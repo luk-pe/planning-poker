@@ -72,5 +72,18 @@ function assesmentTasks($assesment){
     // return arry with tasks for assesment
     return $assesmentTasks;
 }
+function assesmentIdToTitle($id){
+  // DB connection
+  require 'db_connect.php';
+  // SQL statement
+  $query="SELECT a.title FROM assesment as a WHERE a.id = $id";
+  // run SQL statement
+  $result=mysqli_query($link, $query);
+  // extract data
+  $r = mysqli_fetch_assoc($result);
+  $title= $r['title'];
+  // return id
+  return $title;
+}
 
  ?>

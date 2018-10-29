@@ -40,7 +40,7 @@ $page = 'enterAssesment';
             <!--  TODO Style in CSS Datei auslagern-->
             <div class='col-sm-6' style='text-align:right'>
               <!-- start planning poker assesment -->
-              <a href='#' class='badge badge-success'>Start</a>
+              <a href='gameView.php?assesmentid={$a['id']}&task=1' class='badge badge-success'>Start</a>
               <a  class='badge badge-primary' data-toggle='collapse' href='#collapseExample{$a['id']}' role='button' aria-expanded='false' aria-controls='collapseExample{$a['id']}'>
                 Details
               </a>
