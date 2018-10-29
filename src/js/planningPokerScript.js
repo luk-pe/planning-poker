@@ -1,4 +1,5 @@
 function submitEstimation(){
+// TODO check if numeric
    $.ajax({
      type: "POST",
      url: "../php/helper/addEstimation.php",
@@ -17,6 +18,7 @@ function submitEstimation(){
   document.getElementById('button').style.visibility="hidden";
   document.getElementById('estimatedMessage').style.visibility="visible";
 }
+
 // call the function every 100ms -> realtime
 window.setInterval(function (){
 // ajax function to get the estimations
@@ -49,7 +51,7 @@ window.setInterval(function (){
    // write the output in the html source file
     document.getElementById('estimations').innerHTML = output;
   })
-},10000);
+},100);
 
  window.setInterval(function (){
     $.ajax({
@@ -82,7 +84,7 @@ window.setInterval(function (){
        }
 
     })
- },10000);
+ },100);
  function assesmentCompleted(){
    d = $('#date').val();
    $.ajax({
