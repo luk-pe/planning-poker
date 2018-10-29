@@ -1,4 +1,5 @@
 <?php
+// function to select all the estiamtions for a task
 function estimations($task){
   require 'db_connect.php';
   // SQL statement

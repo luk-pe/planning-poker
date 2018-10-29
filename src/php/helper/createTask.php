@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+// function to create a task
 function createTask($taskTitle, $taskDescription, $assesmentId){
   // DB connection
   require_once 'db_connect.php';

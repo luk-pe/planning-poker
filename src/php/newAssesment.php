@@ -18,20 +18,25 @@ $page = 'newAssesment';
   <div class="card">
     <div class="card-body">
       <h5>Create a new Planning Poker assesment</h5>
+      <!--  form to input data for a new assesment-->
       <form action="helper/createAssesment.php" method="post">
+        <!--  title-->
       <div class="form-group">
         <label for="Title">Title</label>
         <input type="text" class="form-control" name="assesment_title" placeholder="Enter title">
       </div>
+      <!--  project id -->
       <div class="form-group">
         <label for="project_id">Projekt ID</label>
         <input type="number" class="form-control" name="project_id" placeholder="optional">
       </div>
+      <!--  select participantss-->
       <div class="form-group">
         <label for="participants">Participants</label>
 
         <select multiple class="form-control" name="participants[]">
           <?php
+          // get all users -> dynamic selection
           require 'helper/userSelection.php';
           $users = userSelection();
           foreach ($users as $u){
@@ -40,6 +45,7 @@ $page = 'newAssesment';
         </select>
         <small id="selectHelp" class="form-text text-muted">select more than one participant by holding shift or command</small>
       </div>
+      <!--  submit button-->
         <button type="submit" class="btn btn-primary">Create assesment and add some tasks </button>
     </form>
     </div>

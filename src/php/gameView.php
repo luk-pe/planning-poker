@@ -29,6 +29,7 @@ require_once 'helper/topInclude.php';
       $tasks = assesmentTasks($assesmentId);
       $numberOfTasks = count($tasks);
       $i=1;
+      // data of current task
       foreach ($tasks as $t) {
         if ($i==$currentTask){
           $taskTitle=$t['title'];
@@ -43,6 +44,7 @@ require_once 'helper/topInclude.php';
         <p><?php echo $taskDescription; ?><p>
           <div class="row">
             <div class='col-sm-6'>
+              <!-- form to enter estimations -->
               <form>
                 <!--  hidden data -->
                 <input type="hidden" value="<?php echo $assesmentId?>" id="assesmentId">
@@ -63,6 +65,7 @@ require_once 'helper/topInclude.php';
               <button style='visibility:visible' id="button" onclick="submitEstimation()" class="btn btn-primary">Submit estimation</button>
               <p style='visibility:hidden' id="estimatedMessage" class='badge badge-success'> Thank you for your estimation! Please wait for the other participants to estimate the task.</p>
             </div>
+            <!--  estiamtions overview-->
           <div class='col-sm-6'>
             <p> Other estimations: <p>
             <p id="estimations"> Name - Estimation PT - comment </p>

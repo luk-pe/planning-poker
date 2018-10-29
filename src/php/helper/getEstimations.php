@@ -1,9 +1,12 @@
 <?php
+// file to get estimations from db and submit via ajax
 require 'db_connect.php';
 require 'assesmentSelection.php';
 require 'userIdentification.php';
+// data via ajax
 $assesmentId = $_POST['asessment'];
 $task = $_POST['task'];
+// select all participants for the assesment
 $participants = assesmentParticipants($assesmentId);
 $participantsData=array();
 foreach ($participants as $p){
@@ -17,6 +20,7 @@ foreach ($participants as $p){
   // run SQL Statement
   $result=mysqli_query($link, $query);
   $result = mysqli_fetch_assoc($result);
+  // if the participant already estimated the task...
   if ($result!= null){
     $participantsData[]=array(
       'userId'=>$result['pp_user_id'],
@@ -24,7 +28,9 @@ foreach ($participants as $p){
       'estimation'=>$result['estimation'],
       'comment'=>$result['comment']
     );
-  } else {
+  }
+  // if no estimation was made yet...
+  else {
     $participantsData[]=array(
       'userId'=>$participantId,
       'username'=>$p,
@@ -33,6 +39,7 @@ foreach ($participants as $p){
     );
   }
 }
+// submit data via ajax
 echo (json_encode($participantsData));
 
 
