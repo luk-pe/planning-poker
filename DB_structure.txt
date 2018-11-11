@@ -1,0 +1,165 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:8889
+-- Erstellungszeit: 11. Nov 2018 um 17:27
+-- Server-Version: 5.7.21
+-- PHP-Version: 7.2.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Datenbank: `planning_poker`
+--
+CREATE DATABASE IF NOT EXISTS `planning_poker` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `planning_poker`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `assesment`
+--
+
+CREATE TABLE `assesment` (
+  `id` int(11) NOT NULL,
+  `projektid` int(11) DEFAULT NULL,
+  `title` varchar(40) NOT NULL,
+  `completed` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `estimated_expense`
+--
+
+CREATE TABLE `estimated_expense` (
+  `task_id` int(11) NOT NULL,
+  `pp_user_id` int(11) NOT NULL,
+  `estimation` int(11) NOT NULL,
+  `comment` varchar(140) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `participant`
+--
+
+CREATE TABLE `participant` (
+  `assesment_id` int(11) NOT NULL,
+  `pp_user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `pp_user`
+--
+
+CREATE TABLE `pp_user` (
+  `id` int(11) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `task`
+--
+
+CREATE TABLE `task` (
+  `id` int(11) NOT NULL,
+  `title` varchar(40) NOT NULL,
+  `description` varchar(140) DEFAULT NULL,
+  `result` int(11) DEFAULT NULL,
+  `assesment_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `assesment`
+--
+ALTER TABLE `assesment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `estimated_expense`
+--
+ALTER TABLE `estimated_expense`
+  ADD PRIMARY KEY (`task_id`,`pp_user_id`),
+  ADD KEY `pp_user_id` (`pp_user_id`);
+
+--
+-- Indizes für die Tabelle `participant`
+--
+ALTER TABLE `participant`
+  ADD PRIMARY KEY (`assesment_id`,`pp_user_id`),
+  ADD KEY `pp_user_id` (`pp_user_id`);
+
+--
+-- Indizes für die Tabelle `pp_user`
+--
+ALTER TABLE `pp_user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`,`username`);
+
+--
+-- Indizes für die Tabelle `task`
+--
+ALTER TABLE `task`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `assesment_id` (`assesment_id`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `assesment`
+--
+ALTER TABLE `assesment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `pp_user`
+--
+ALTER TABLE `pp_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `task`
+--
+ALTER TABLE `task`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `estimated_expense`
+--
+ALTER TABLE `estimated_expense`
+  ADD CONSTRAINT `estimated_expense_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`),
+  ADD CONSTRAINT `estimated_expense_ibfk_2` FOREIGN KEY (`pp_user_id`) REFERENCES `pp_user` (`id`);
+
+--
+-- Constraints der Tabelle `participant`
+--
+ALTER TABLE `participant`
+  ADD CONSTRAINT `participant_ibfk_1` FOREIGN KEY (`assesment_id`) REFERENCES `assesment` (`id`),
+  ADD CONSTRAINT `participant_ibfk_2` FOREIGN KEY (`pp_user_id`) REFERENCES `pp_user` (`id`);
+
+--
+-- Constraints der Tabelle `task`
+--
+ALTER TABLE `task`
+  ADD CONSTRAINT `task_ibfk_1` FOREIGN KEY (`assesment_id`) REFERENCES `assesment` (`id`);
